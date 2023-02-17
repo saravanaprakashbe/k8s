@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cp-demo
+spec:
+  containers:
+    - name: demo
+      image: alpine
+      command: ["sleep", "3600"]
+      env:
+        # Define the environment variable
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: env-demo           
+              key:  db_name
