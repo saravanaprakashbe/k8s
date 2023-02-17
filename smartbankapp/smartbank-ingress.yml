@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: app
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: klaaseksu9-app.brainupgrade.in
+    http:
+      paths:
+      - backend:
+          service:
+            name: smartbank-frontend-service
+            port:
+              number: 80
+        path: /?(.*)
+        pathType: Exact
+  tls:
+  - hosts:
+    - klaaseksu9-app.brainupgrade.in
+    secretName: secre8shh
+status:
+  loadBalancer:
+    ingress:
+    - hostname: ac25907fa71864e8db5eda0dd7fc843f-9766ad0f1f407f26.elb.ap-southeast-1.amazonaws.com
